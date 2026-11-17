@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: multilogin-creator-bot
+    env: docker
+    plan: free
+    region: oregon
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_ID
+        sync: false
+      - key: HEADLESS
+        value: "true"
+      - key: PORT
+        value: "10000"
