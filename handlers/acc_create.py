@@ -38,6 +38,7 @@ async def acc_create_entry(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data.pop("flow_mode", None)
     
     # Check if user has a configured permanent password
+    db_user = get_user(user_id) or {}
     default_pass = db_user.get("default_pass")
     pass_mode = db_user.get("pass_mode", "ask_each_time")
     

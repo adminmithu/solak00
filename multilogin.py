@@ -56,7 +56,8 @@ async def start_registration(user_id: int, email: str, password: str) -> Dict[st
         page.set_default_timeout(BROWSER_TIMEOUT_MS)
         
         # Navigate to registration page
-        await page.goto(MULTILOGIN_SIGNUP_URL, wait_until="networkidle")
+        await page.goto(MULTILOGIN_SIGNUP_URL, wait_until="domcontentloaded")
+        await page.wait_for_selector('input[type="email"]', timeout=25000)
         
         # Fill email
         await page.fill('input[type="email"]', email)
